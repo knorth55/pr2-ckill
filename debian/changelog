@@ -1,4 +1,4 @@
-pr2-ckill (0.5.6-precise) stable; urgency=low
+pr2-ckill (0.5.6-xenial) stable; urgency=low
 
   [ Austin Hendrix ]
   * Incrementing to SVN: r881
