@@ -1,9 +1,12 @@
 pr2-ckill (0.5.6-precise) stable; urgency=low
 
+  [ Austin Hendrix ]
   * Incrementing to SVN: r881
    - r881: Update whitelist.
 
- -- Austin Hendrix <ahendrix@willowgarage.com>  Thu, 05 Jul 2012 11:45:58 -0700
+  [ David Feil-Seifer ]
+
+ -- David Feil-Seifer <dave@cse.unr.edu>  Wed, 18 Apr 2018 16:40:41 -0700
 
 pr2-ckill (0.5.4-precise) stable; urgency=low
 
