@@ -1,3 +1,10 @@
+pr2-ckill (0.5.7-focal) stable; urgency=low
+
+  [ David Feil-Seifer ]
+  * updating for python3 on focal
+
+ -- David Feil-Seifer <dave@cse.unr.edu>  Wed, 2 Mar 2021 16:40:41 -0700
+
 pr2-ckill (0.5.6-xenial) stable; urgency=low
 
   [ Austin Hendrix ]
