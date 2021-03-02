@@ -81,10 +81,10 @@ class Process:
       self.cmd2 = self.args[0]
 
   def display(self):
-    print "%-6s %-6s %-6s %-12s %-6s %-20s -- %s" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd, self.cmd2)
+    print ("%-6s %-6s %-6s %-12s %-6s %-20s -- %s" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd, self.cmd2))
 
   def __repr__(self):
-    return "<Process %s %s %s %s %s %s>" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd)
+    return ("<Process %s %s %s %s %s %s>" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd))
 
 class ProcessList(UserDict.UserDict):
   def __init__(self, hosts):
@@ -234,7 +234,7 @@ class RosInit:
       
   def kill(self, signal=15):
     if os.getuid() != 0:
-      print "you need to be root to run this."
+      print ("you need to be root to run this.")
       return
 
     for host in self.hosts:
@@ -252,7 +252,7 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print "Error:", host, stderr
+          print ("Error:", host, stderr)
 
   def list(self):
     for host in self.hosts:
@@ -274,7 +274,7 @@ class RosInit:
     whitelist = whitelist.keys()
     whitelist.sort()
     for c in whitelist:
-      print c
+      print (c)
     
   def halt(self):
     for host in self.hosts:
@@ -285,7 +285,7 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print "Error:", host, stderr
+          print ("Error:", host, stderr)
 
   def reboot(self):
     for host in self.hosts:
@@ -296,11 +296,11 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print "Error:", host, stderr
+          print ("Error:", host, stderr)
 
 
 def usage(prog):
-  print __doc__ % vars()
+  print (__doc__ % vars())
 
 def main(argv, stdout, environ):
   progname = argv[0]
