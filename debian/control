@@ -7,7 +7,7 @@ Standards-Version: 3.7.2
 
 Package: pr2-ckill
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, python
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3
 Description: Provides a script for killing processes across a cluster of machines
 Provides: ${diverted-files}
 Conflicts: ${diverted-files}
