@@ -47,7 +47,7 @@ SSH_CMD=['ssh', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev
 import os, sys, string, time
 import re
 import subprocess
-import UserDict
+from collections import UserDict
 from optparse import OptionParser
 import pwd
 
@@ -86,9 +86,9 @@ class Process:
   def __repr__(self):
     return ("<Process %s %s %s %s %s %s>" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd))
 
-class ProcessList(UserDict.UserDict):
+class ProcessList(UserDict):
   def __init__(self, hosts):
-    UserDict.UserDict.__init__(self)
+    UserDict.__init__(self)
     self.hosts = hosts
     self.fetch()
 
