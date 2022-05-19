@@ -59,7 +59,7 @@ def spawn(cmd):
 
   stdout, stderr = p.communicate()
   if p.returncode != 0:
-    raise ProcessError, "Error: %s" % stderr
+    raise ProcessError("Error: %s" % stderr)
 
   return stdout
 
@@ -81,7 +81,7 @@ class Process:
       self.cmd2 = self.args[0]
 
   def display(self):
-    print ("%-6s %-6s %-6s %-12s %-6s %-20s -- %s" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd, self.cmd2))
+    print(("%-6s %-6s %-6s %-12s %-6s %-20s -- %s" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd, self.cmd2)))
 
   def __repr__(self):
     return ("<Process %s %s %s %s %s %s>" % (self.host, self.pid, self.ppid, self.username, self.uid, self.cmd))
@@ -197,7 +197,7 @@ class RosInit:
         p = pl.get(p.ppid, None)
 
     todo = []
-    for p in pl.values():
+    for p in list(pl.values()):
       if p.cmd2[0] == '[' and p.cmd2[-1] == ']':  
         ## skip all kernel threads
         continue
@@ -219,7 +219,7 @@ class RosInit:
       # if we have a blacklist, filter out anything not in it 
       if self.blacklist:  
         include_cmd = False 
-        for term in self.blacklist.keys():
+        for term in list(self.blacklist.keys()):
           if re.search(term, p.cmd2):
             include_cmd = True
         if not include_cmd:
@@ -239,7 +239,7 @@ class RosInit:
 
     for host in self.hosts:
       todo = self.kill_list(host)
-      todo = map(lambda x: str(x.pid), todo)
+      todo = [str(x.pid) for x in todo]
 
       if len(todo) == 0: continue
 
@@ -252,7 +252,7 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print ("Error:", host, stderr)
+          print(("Error:", host, stderr))
 
   def list(self):
     for host in self.hosts:
@@ -265,13 +265,13 @@ class RosInit:
   def save(self):
     whitelist = {}
     pl = ProcessList(self.hosts)
-    for p in pl.values():
+    for p in list(pl.values()):
       if p.cmd2[0] == '[' and p.cmd2[-1] == ']': 
         ## skip the kernel threads
         continue
       whitelist[p.cmd2] = 1
 
-    whitelist = whitelist.keys()
+    whitelist = list(whitelist.keys())
     whitelist.sort()
     for c in whitelist:
       print (c)
@@ -285,7 +285,7 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print ("Error:", host, stderr)
+          print(("Error:", host, stderr))
 
   def reboot(self):
     for host in self.hosts:
@@ -296,11 +296,11 @@ class RosInit:
       stdout, stderr = p.communicate()
       if p.returncode != 0:
         if stderr.find("No such process") == -1:
-          print ("Error:", host, stderr)
+          print(("Error:", host, stderr))
 
 
 def usage(prog):
-  print (__doc__ % vars())
+  print((__doc__ % vars()))
 
 def main(argv, stdout, environ):
   progname = argv[0]
