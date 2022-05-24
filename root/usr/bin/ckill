@@ -44,7 +44,7 @@ NAME = 'ckill'
 
 SSH_CMD=['ssh', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null']
 
-import os, sys, string, time
+import os, sys, time
 import re
 import subprocess
 from collections import UserDict
@@ -76,7 +76,7 @@ class Process:
 
 
     if self.cmd.startswith("python"):
-      self.cmd2 = string.join(self.args[:2])
+      self.cmd2 = '.'.join(self.args[:2])
     else:
       self.cmd2 = self.args[0]
 
@@ -102,10 +102,10 @@ class ProcessList(UserDict):
     cmd = ['ps', '-e', '--no-headers', '-o', 'pid=', '-o', 'ppid=', '-o', 'user=', '-o', 'uid=', '-o', 'comm=', '-o', 'args=', ]
     ppid = None
     if host != "localhost":
-      ppid = ['python', '-c', "'import os; print os.getppid();print'", ";"]
+      ppid = ['python3', '-c', "'import os; print(os.getppid());print()'", ";"]
       cmd = SSH_CMD + [host] + ppid + cmd
 
-    stdout = spawn(cmd)
+    stdout = spawn(cmd).decode('utf-8')
       
     lines = stdout.split("\n")
 
