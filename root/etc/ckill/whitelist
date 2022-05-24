@@ -19,6 +19,7 @@ man
 ps
 screen
 tmux
+tmux:
 sftp-server
 su
 yes
