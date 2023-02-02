@@ -1,0 +1,5 @@
+debian/.debhelper/*
+debian/files
+debian/pr2-ckill.debhelper.log
+debian/pr2-ckill.substvars
+debian/pr2-ckill/*
