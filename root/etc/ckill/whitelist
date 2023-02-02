@@ -6,6 +6,7 @@ csh
 sh
 sshd
 ssh
+systemd
 emacs
 emacs22
 emacsclient
@@ -24,3 +25,10 @@ sftp-server
 su
 yes
 vmstat
+/usr/sbin/gdm3
+/usr/lib/gdm3/gdm-x/session
+gdm3
+gdm-session-wor
+gdm-session-worker
+gdm-x-session
+Xorg
