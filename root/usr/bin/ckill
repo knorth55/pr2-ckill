@@ -251,7 +251,7 @@ class RosInit:
       p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       stdout, stderr = p.communicate()
       if p.returncode != 0:
-        if stderr.find("No such process") == -1:
+        if b"No such process" not in stderr:
           print(("Error:", host, stderr))
 
   def list(self):
@@ -284,7 +284,7 @@ class RosInit:
       p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       stdout, stderr = p.communicate()
       if p.returncode != 0:
-        if stderr.find("No such process") == -1:
+        if b"No such process" not in stderr:
           print(("Error:", host, stderr))
 
   def reboot(self):
@@ -295,7 +295,7 @@ class RosInit:
       p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       stdout, stderr = p.communicate()
       if p.returncode != 0:
-        if stderr.find("No such process") == -1:
+        if b"No such process" not in stderr:
           print(("Error:", host, stderr))
 
 
